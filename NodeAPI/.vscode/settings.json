@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/11ba1e10-af02-4e1c-8e67-6fafca99b984/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/test-sh-nodejsapi",
+  "appService.deploySubpath": "."
+}

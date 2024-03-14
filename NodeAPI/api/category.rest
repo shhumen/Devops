@@ -1,0 +1,52 @@
+### Create new Category
+
+POST http://localhost:5000/api/categories
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
+
+{
+   "categoryName": "Beverages1ww1edfg", "description": "Soft, Tea" 
+}
+
+
+### Bulk Insert
+
+POST http://localhost:5000/api/categories/bulk-insert
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
+
+{
+  "categories": [
+    { "categoryName": "Beverages",      "description": "Soft drinks, coffees, teas, beers, and ales" },
+    { "categoryName": "Condiments",     "description": "Sweet and savory sauces, relishes, spreads, and seasonings" },
+    { "categoryName": "Confections",    "description": "Desserts, candies, and sweet breads" },
+    { "categoryName": "Dairy Products", "description": "Cheeses" },
+    { "categoryName": "Grains/Cereals", "description": "Breads, crackers, pasta, and cereal" },
+    { "categoryName": "Meat/Poultry",   "description": "Prepared meats" },
+    { "categoryName": "Produce",        "description": "Dried fruit and bean curd" },
+    { "categoryName": "Seafood",        "description": "Seaweed and fish" }
+  ]
+}
+
+
+### GET Category By Id
+GET http://localhost:5000/api/categories/65ce1d2877c9c036cefce4d6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
+
+
+### GET All Categories
+GET http://localhost:5000/api/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMzk3ODAyYmEzZWE0NGQyODdiM2MiLCJpYXQiOjE3MDkyMTQyMDksImV4cCI6MTcwOTIxNTQwOX0.DmXs9an2CV1blpvw0CpSugeqSfwCJmnTdyCSOaVVcMk
+
+### DELETE Category By Id
+DELETE http://localhost:5000/api/categories/65ce1d2877c9c036cefce4d6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
+
+### Update Category By Id
+PATCH http://localhost:5000/api/categories/65ce1d2877c9c036cefce4d6
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
+
+{
+   "categoryName": "Bevqerages", "description": "Soft, Tea" 
+}

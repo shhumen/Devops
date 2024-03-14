@@ -1,0 +1,36 @@
+
+
+### Get All
+GET http://localhost:5100/api/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWUxYjBjOTNjZmUwNjcxZGVlOTE4MWMiLCJpYXQiOjE3MDk2Mzk4MzQsImV4cCI6MTcwOTcyNjIzNH0.F54C6mcviHKlm2qd73wxgzMkT_QzSO2DiyCUd5P1ivM
+
+
+### Get By CategoryId
+GET http://localhost:5100/api/products/category/65e2f112dac4eb192cf16b99
+Content-Type: application/json
+
+
+### DELETE 
+DELETE http://localhost:5000/api/products/65e2f112dac4eb192cf16b99
+
+
+### Bulk Insert
+ 
+POST http://localhost:5000/api/products/bulk-insert
+Content-Type: application/json
+
+
+{
+  "products": [
+    {
+      "productName": "Chai", "unitPrice": 18.0,"unitsInStock": 39},
+      {
+        "productName": "Chang", "unitPrice": 19.0,"unitsInStock": 17
+      },
+      {
+        "productName": "Aniseed Syrup", "unitPrice": 10.0,
+        "unitsInStock": 13
+      }
+      ]
+}

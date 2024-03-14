@@ -1,0 +1,15 @@
+### Create new UserRole
+
+POST http://localhost:5000/userRoles
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWUxYjBjOTNjZmUwNjcxZGVlOTE4MWMiLCJpYXQiOjE3MDkyOTE0NDIsImV4cCI6MTcwOTI5MjY0Mn0.sULTVtesjFzYC2kT8FGPsgZwMVO2VFJvQLVsP8sJrEU
+
+{
+   "userId": "65e1b0c93cfe0671dee9181c",  
+   "roleId": "65e1b7dc74c5273efcc26020"   
+}
+
+### Get all UserRoles  
+GET http://localhost:5000/userRoles
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWUxYjBjOTNjZmUwNjcxZGVlOTE4MWMiLCJpYXQiOjE3MDkyOTE0NDIsImV4cCI6MTcwOTI5MjY0Mn0.sULTVtesjFzYC2kT8FGPsgZwMVO2VFJvQLVsP8sJrEU

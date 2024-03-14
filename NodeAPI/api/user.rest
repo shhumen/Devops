@@ -1,0 +1,44 @@
+### Create New User
+POST http://localhost:5100/api/auth/register
+Content-Type: application/json
+ 
+{ 
+    "username": "shumen033", 
+    "password": "Wumen021!" ,
+    "firstname":"Shumen",
+    "lastname":"Mehdiyeva",
+    "email":"sh@gmail.com"
+}
+
+### Get All
+
+GET http://localhost:5100/api/auth
+ 
+
+### Login
+
+POST http://localhost:5100/api/auth/login
+Content-Type: application/json
+ 
+{ 
+    "username": "shumen033", 
+    "password": "Wumen021!" 
+}
+ 
+### Delete by Id
+
+DELETE http://localhost:5100/api/auth/65f0232f8f9a1308d3859e45
+
+
+### Update Category By Id
+PATCH http://localhost:5100/api/auth/65f308561ef85c6d733178a6
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
+
+{
+   "username": "aytanash",
+   "firstname": "Aytan SH" 
+}
+
+### Get By Id
+GET http://localhost:5100/api/auth/65f308561ef85c6d733178a6

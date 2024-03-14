@@ -1,0 +1,31 @@
+### Create new Role
+
+POST http://localhost:5100/api/roles
+Content-Type: application/json
+
+{
+   "name": "user" 
+}
+
+ 
+### GET Role By Id
+GET http://localhost:5000/roles/65ce1d2877c9c036cefce4d6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWUxYjBjOTNjZmUwNjcxZGVlOTE4MWMiLCJpYXQiOjE3MDkyOTE0NDIsImV4cCI6MTcwOTI5MjY0Mn0.sULTVtesjFzYC2kT8FGPsgZwMVO2VFJvQLVsP8sJrEU
+
+
+### GET All Roles
+GET http://localhost:5100/api/roles
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWUxYjBjOTNjZmUwNjcxZGVlOTE4MWMiLCJpYXQiOjE3MDkyOTE0NDIsImV4cCI6MTcwOTI5MjY0Mn0.sULTVtesjFzYC2kT8FGPsgZwMVO2VFJvQLVsP8sJrEU
+
+### DELETE Role By Id
+DELETE http://localhost:5000/roles/65ce1d2877c9c036cefce4d6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWUxYjBjOTNjZmUwNjcxZGVlOTE4MWMiLCJpYXQiOjE3MDkyOTE0NDIsImV4cCI6MTcwOTI5MjY0Mn0.sULTVtesjFzYC2kT8FGPsgZwMVO2VFJvQLVsP8sJrEU
+
+### Update Role By Id
+PATCH http://localhost:5000/roles/65ce1d2877c9c036cefce4d6
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWUxYjBjOTNjZmUwNjcxZGVlOTE4MWMiLCJpYXQiOjE3MDkyOTE0NDIsImV4cCI6MTcwOTI5MjY0Mn0.sULTVtesjFzYC2kT8FGPsgZwMVO2VFJvQLVsP8sJrEU
+
+{
+   "name": "moderator" 
+}

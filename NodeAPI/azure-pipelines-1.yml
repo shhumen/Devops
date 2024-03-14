@@ -1,0 +1,33 @@
+trigger: 
+- master 
+pool: 
+  vmImage: ubuntu-latest 
+steps: 
+- task: NodeTool@0 
+  inputs: 
+    versionSpec: '10.x' 
+  displayName: 'Install Node.js' 
+- script: | 
+    npm install 
+  displayName: 'npm install' 
+
+# Belirli dosyaları publish dizinine kopyala 
+- script: | 
+    mkdir -p publish 
+    cp package.json publish/ 
+    cp server.js publish/ 
+    cp -r models publish/ 
+    cp -r routes publish/ 
+    cp -r services publish/ 
+    cp -r templates publish/ 
+    cp -r uploads publish/ 
+    cp -r validations publish/ 
+    cp -r middleware publish/ 
+    cp -r node_modules publish/ 
+  displayName: 'Copy specific files to publish folder' 
+    
+- task: PublishBuildArtifacts@1 
+  inputs: 
+    PathtoPublish: 'publish' 
+    ArtifactName: 'build' 
+    publishLocation: 'Container'

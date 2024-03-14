@@ -1,0 +1,51 @@
+[
+  {
+    "productId": 1,
+    "productName": "Chai",
+    "unitPrice": 18.0,
+    "unitsInStock": 39,
+    "categoryId": 1
+  },
+  {
+    "productId": 2,
+    "productName": "Chang",
+    "unitPrice": 19.0,
+    "unitsInStock": 17,
+    "categoryId": 1
+  },
+  {
+    "productId": 3,
+    "productName": "Aniseed Syrup",
+    "unitPrice": 10.0,
+    "unitsInStock": 13,
+    "categoryId": 2
+  },
+  {
+    "productId": 16,
+    "productName": "Pavlova",
+    "unitPrice": 17.45,
+    "unitsInStock": 29,
+    "categoryId": 3
+  },
+  {
+    "productId": 75,
+    "productName": "Rhönbräu Klosterbier",
+    "unitPrice": 7.75,
+    "unitsInStock": 125,
+    "categoryId": 1
+  },
+  {
+    "productId": 76,
+    "productName": "Lakkalikööri",
+    "unitPrice": 18.0,
+    "unitsInStock": 57,
+    "categoryId": 1
+  },
+  {
+    "productId": 77,
+    "productName": "Original Frankfurter grüne Soße",
+    "unitPrice": 13.0,
+    "unitsInStock": 32,
+    "categoryId": 2
+  }
+]
