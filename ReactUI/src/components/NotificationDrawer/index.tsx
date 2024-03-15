@@ -8,14 +8,19 @@ import {
 import Title from "antd/es/typography/Title";
 import io, { Socket } from "socket.io-client";
 import AppConsts from "../../library/appconsts";
+
+
 interface NotificationDrawerProps {
   visible: boolean;
-  showOrHideDrawer: () => void; 
+  showOrHideDrawer: () => void;
   setNCount: any;
 }
 
 const NotificationDrawer = (props: NotificationDrawerProps) => {
-  const { visible, showOrHideDrawer, setNCount} = props;
+
+
+  const { visible, showOrHideDrawer, setNCount  } = props;
+  
   const socket = useRef<Socket | null>(null);
 
   const [notifications, setNotifications] = React.useState<any[]>([]);
@@ -30,7 +35,6 @@ const NotificationDrawer = (props: NotificationDrawerProps) => {
     });
 
     setNotifications([
-      // db den geldi
       {
         title: "Ant Design Title 1",
         current: 0,
@@ -45,7 +49,8 @@ const NotificationDrawer = (props: NotificationDrawerProps) => {
 
   useEffect(() => {
     setNCount(notifications.length);
-  }, [notifications]);
+  }, [notifications, setNCount]);
+
   setNCount(notifications.length);
 
   const content = (item: any, index: any) => {

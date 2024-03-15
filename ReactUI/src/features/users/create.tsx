@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Col, Row } from 'antd'
 import { useAppDispatch } from '../../app/hooks'
-import { addUser } from './usersSlice'
+import { addUser } from './userSlice'
 import { useNavigate } from 'react-router-dom'
 import FormComponent from './components/formComponent'
 
@@ -10,9 +10,9 @@ const Create: React.FC = () => {
 
   const dispatch = useAppDispatch()
 
-  const onFinish = (values: any) => {
+  const onFinish = (values: any) => { 
     dispatch(addUser(values))
-    navigate('/admin/auth')
+    navigate('/admin/users')
   }
 
   return (

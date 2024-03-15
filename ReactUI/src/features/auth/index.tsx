@@ -25,12 +25,7 @@ export default function Login() {
   }, [result]);
 
   const handleSubmit = (values: LoginModel) => {
-    loginAuth(values.username, values.password);
-    // const result = encryptData("Pro247!!");
-    // console.log(result);
-    // console.log("-----------");
-    // const restVal = decryptData(result);
-    // console.log(restVal);
+    loginAuth(values.username, values.password); 
   };
 
   useEffect(() => {

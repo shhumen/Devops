@@ -41,8 +41,7 @@ export const deleteRole = createAsyncThunk(
 export const fetchRole = createAsyncThunk(
   "roles/fetchRole",
   async (id: string) => {
-    const response = await roleService.get(id);
-    console.log(response)
+    const response = await roleService.get(id); 
     return response.data;
   }
 );

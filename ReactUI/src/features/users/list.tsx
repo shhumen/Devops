@@ -14,19 +14,13 @@ import {
 } from "antd";
 import { UserType } from "./type";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import {
-  deleteUser,
-  fetchUsers,
-  fetchUser,
-  updateUser,
-} from "./usersSlice";
+import { deleteUser, fetchUsers, fetchUser, updateUser } from "./userSlice";
 import {
   SearchOutlined,
   PlusOutlined,
   SettingOutlined,
   EditOutlined,
   DeleteOutlined,
-  UnorderedListOutlined,
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import Card from "antd/es/card/Card";
@@ -88,9 +82,7 @@ const List: React.FC = () => {
     setOpen({ open: false, content: "" });
   };
 
-  const onNavigateToCreate = () => navigate("/admin/auth/create");
-  const onNavigateToProducts = (id: string) =>
-    navigate(`/auth/${id}`);
+  const onNavigateToCreate = () => navigate("/admin/users/create");
 
   type ColumnType = TableProps<UserType>["columns"] | any;
   const columns: ColumnType = useMemo(
@@ -238,7 +230,11 @@ const List: React.FC = () => {
           open={open.open}
           onOpenHandler={onEditHandle}
           content={
-            <FormComponent onFinish={onFinish} initialValues={user} />
+            <FormComponent
+              isEdit={true}
+              onFinish={onFinish}
+              initialValues={user}
+            />
           }
         />
       )}

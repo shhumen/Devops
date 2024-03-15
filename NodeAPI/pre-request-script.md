@@ -1,54 +1,67 @@
 ```js
-const url = http://localhost:5000/auth/login
 
 const payload = {
-    username:"shumen02#",
-    password:"Wumen021!"
+    username: pm.globals.get('username'),
+    password: pm.globals.get('password')
 }
 
 const requestOptions = {
-    method:"POST",
-    body:JSON.stringfy(payload),
-    headers: {
-        'Content-Type' : 'application/json'
-    }
-}
+    url: pm.globals.get('node_api_url')+'/auth/login',
+    header:{
+        'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: {
+        mode:'raw',
+        raw:JSON.stringify(payload)
+    }  
+};
 
-pm.sendRequest(url,requestOptions, function(err,response) {
-    if(err) {
-        console.log(err);
+pm.sendRequest(requestOptions, (err, response) => { 
+    if (err) {
+        console.error('Login request failed:', err);
+    } else {
+        try {
+            const jsonResponse = response.json(); 
+            if (jsonResponse.content && jsonResponse.content.token) {
+                pm.globals.set('pervin-icaze', jsonResponse.content.token);
+                console.log('Token successfully set:', jsonResponse.content.token);
+            } else {
+                console.error('Token not found in response:', jsonResponse);
+            }
+        } catch (e) { 
+            console.error('Error parsing response:', e);
+        }
     }
-    else {
-        const jsonResponse = response.json()
-        pm.globals.set("authToken", jsonResponse.content.token)
-    }
-})
+}); 
 
 ```
 
+
 ```js
 
-pm.test("Status code 200", function(){
-    p.response.to.have.status(200)
+pm.test('Status code is 200', function(){
+    pm.response.to.have.status(200)
 })
 
-pm.test("Response must have a categroy", function() {
-    var jsonData= pm.json()
-    pm.expect(jsonData).to.have.property('categoryName')
-    pm.expect(jsonData).to.have.property('description')
-    // pm.expect(jsonData).to.have.property('_id')
-    // pm.expect(jsonData).to.have.property('createdDate')
+pm.test('Response must have a category', function(){
 
-    pm.expect(jsonData.categoryName).to.eql("Yeni categroy test 5")
-    pm.expect(jsonData.description).to.eql("Soft tea 5")
+    var jsonData = pm.response.json();
+    pm.expect(jsonData).to.have.property('categoryName');
+    pm.expect(jsonData).to.have.property('description');
+    // pm.expect(jsonData).to.have.property('_id');
+    // pm.expect(jsonData).to.have.property('createdDate');
 
-    pm.test("Response includes the correct name", function() {
 
-        var jsonData= pm.json()
-        pm.expect(jsonData).to.have.property('categoryName')
-        pm.expect(jsonData.categoryName).to.eql("Yeni categroy test 5")
-
-    })
+    pm.expect(jsonData.categoryName).to.eql('Yeni Kategori 6');
+    pm.expect(jsonData.description).to.eql('Soft, Tea');
 })
+
+pm.test('Response includes the correct name', function(){
+
+    var jsonData = pm.response.json();
+    pm.expect(jsonData).to.have.property('categoryName');
+    pm.expect(jsonData.categoryName).to.eql('Yeni Kategori 6');
+});
 
 ```

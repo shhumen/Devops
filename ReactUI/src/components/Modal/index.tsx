@@ -21,7 +21,7 @@ const CustomModal = (props: ModalProps) => {
         open={open}
         onOk={() => onOpenHandler(false)}
         onCancel={() => onOpenHandler(false)}
-        width={width}
+        width={`${width}%`}
       >
         {content}
       </Modal>

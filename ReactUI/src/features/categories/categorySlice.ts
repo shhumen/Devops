@@ -41,7 +41,6 @@ export const fetchCategory = createAsyncThunk(
   "categories/fetchCategory",
   async (id: string) => {
     const response = await categoryService.get(id);
-    console.log(response)
     return response.data;
   }
 );

@@ -1,36 +1,422 @@
+POST http://localhost:5000/products
+Content-Type: application/json
 
+{
+    "productName":"Test",
+    "description":"Test"
+    "unitPrice":100,
+    "unitsInStock":100 
+}
 
 ### Get All
-GET http://localhost:5100/api/products
+GET http://localhost:5000/products
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWUxYjBjOTNjZmUwNjcxZGVlOTE4MWMiLCJpYXQiOjE3MDk2Mzk4MzQsImV4cCI6MTcwOTcyNjIzNH0.F54C6mcviHKlm2qd73wxgzMkT_QzSO2DiyCUd5P1ivM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMzk3ODAyYmEzZWE0NGQyODdiM2MiLCJpYXQiOjE3MDkxMzA4NzgsImV4cCI6MTcwOTEzMjA3OH0.ckcg5rKa1GwTtDVWhQ72aNGpiAF7-U2_2RKArSa_B9Q
 
-
+ 
 ### Get By CategoryId
-GET http://localhost:5100/api/products/category/65e2f112dac4eb192cf16b99
+
+GET http://localhost:5000/products/category/1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMzk3ODAyYmEzZWE0NGQyODdiM2MiLCJpYXQiOjE3MDkyMDMwMDEsImV4cCI6MTcwOTIwNDIwMX0.CSaRdnKxzVWiqxlvfs4TBxriAEx9LGyNW4RVfXbz0sg
 
+ 
 
-### DELETE 
-DELETE http://localhost:5000/api/products/65e2f112dac4eb192cf16b99
-
+ 
 
 ### Bulk Insert
  
 POST http://localhost:5000/api/products/bulk-insert
 Content-Type: application/json
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWU1OWY5NWE0NjI5ZDZhZDFhOGQ3MjYiLCJpYXQiOjE3MDk1NDc5NTAsImV4cCI6MTcxMTI3NTk1MH0.Po7Bz7KSChyG943oBUgf-6C7afQR8mrCdR_gwVGrbDc
+ 
 {
   "products": [
-    {
-      "productName": "Chai", "unitPrice": 18.0,"unitsInStock": 39},
-      {
-        "productName": "Chang", "unitPrice": 19.0,"unitsInStock": 17
-      },
-      {
-        "productName": "Aniseed Syrup", "unitPrice": 10.0,
-        "unitsInStock": 13
-      }
-      ]
+    { 
+      "productName": "Chai",
+      "unitPrice": 18.0,
+      "unitsInStock": 39
+    },
+    { 
+      "productName": "Chang",
+      "unitPrice": 19.0,
+      "unitsInStock": 17
+    },
+    { 
+      "productName": "Aniseed Syrup",
+      "unitPrice": 10.0,
+      "unitsInStock": 13
+    },
+    { 
+      "productName": "Chef Anton's Cajun Seasoning",
+      "unitPrice": 22.0,
+      "unitsInStock": 53
+    },
+    { 
+      "productName": "Chef Anton's Gumbo Mix",
+      "unitPrice": 21.35,
+      "unitsInStock": 0
+    },
+    { 
+      "productName": "Grandma's Boysenberry Spread",
+      "unitPrice": 25.0,
+      "unitsInStock": 120
+    },
+    { 
+      "productName": "Uncle Bob's Organic Dried Pears",
+      "unitPrice": 30.0,
+      "unitsInStock": 15
+    },
+    { 
+      "productName": "Northwoods Cranberry Sauce",
+      "unitPrice": 40.0,
+      "unitsInStock": 6
+    },
+    { 
+      "productName": "Mishi Kobe Niku",
+      "unitPrice": 97.0,
+      "unitsInStock": 29
+    },
+    { 
+      "productName": "Ikura",
+      "unitPrice": 31.0,
+      "unitsInStock": 31
+    },
+    { 
+      "productName": "Queso Cabrales",
+      "unitPrice": 21.0,
+      "unitsInStock": 22
+    },
+    { 
+      "productName": "Queso Manchego La Pastora",
+      "unitPrice": 38.0,
+      "unitsInStock": 86
+    },
+    { 
+      "productName": "Konbu",
+      "unitPrice": 6.0,
+      "unitsInStock": 24
+    },
+    { 
+      "productName": "Tofu",
+      "unitPrice": 23.25,
+      "unitsInStock": 35
+    },
+    { 
+      "productName": "Genen Shouyu",
+      "unitPrice": 15.5,
+      "unitsInStock": 39
+    },
+    { 
+      "productName": "Pavlova",
+      "unitPrice": 17.45,
+      "unitsInStock": 29
+    },
+    { 
+      "productName": "Alice Mutton",
+      "unitPrice": 39.0,
+      "unitsInStock": 0
+    },
+    { 
+      "productName": "Carnarvon Tigers",
+      "unitPrice": 62.5,
+      "unitsInStock": 42
+    },
+    { 
+      "productName": "Teatime Chocolate Biscuits",
+      "unitPrice": 9.2,
+      "unitsInStock": 25
+    },
+    { 
+      "productName": "Sir Rodney's Marmalade",
+      "unitPrice": 81.0,
+      "unitsInStock": 40
+    },
+    { 
+      "productName": "Sir Rodney's Scones",
+      "unitPrice": 10.0,
+      "unitsInStock": 3
+    },
+    { 
+      "productName": "Gustaf's Knäckebröd",
+      "unitPrice": 21.0,
+      "unitsInStock": 104
+    },
+    { 
+      "productName": "Tunnbröd",
+      "unitPrice": 9.0,
+      "unitsInStock": 61
+    },
+    { 
+      "productName": "Guaraná Fantástica",
+      "unitPrice": 4.5,
+      "unitsInStock": 20
+    },
+    { 
+      "productName": "NuNuCa Nuß-Nougat-Creme",
+      "unitPrice": 14.0,
+      "unitsInStock": 76
+    },
+    { 
+      "productName": "Gumbär Gummibärchen",
+      "unitPrice": 31.23,
+      "unitsInStock": 15
+    },
+    { 
+      "productName": "Schoggi Schokolade",
+      "unitPrice": 43.9,
+      "unitsInStock": 49
+    },
+    { 
+      "productName": "Rössle Sauerkraut",
+      "unitPrice": 45.6,
+      "unitsInStock": 26
+    },
+    { 
+      "productName": "Thüringer Rostbratwurst",
+      "unitPrice": 123.79,
+      "unitsInStock": 0
+    },
+    { 
+      "productName": "Nord-Ost Matjeshering",
+      "unitPrice": 25.89,
+      "unitsInStock": 10
+    },
+    { 
+      "productName": "Gorgonzola Telino",
+      "unitPrice": 12.5,
+      "unitsInStock": 0
+    },
+    { 
+      "productName": "Mascarpone Fabioli",
+      "unitPrice": 32.0,
+      "unitsInStock": 9
+    },
+    { 
+      "productName": "Geitost",
+      "unitPrice": 2.5,
+      "unitsInStock": 112
+    },
+    { 
+      "productName": "Sasquatch Ale",
+      "unitPrice": 14.0,
+      "unitsInStock": 111
+    },
+    { 
+      "productName": "Steeleye Stout",
+      "unitPrice": 18.0,
+      "unitsInStock": 20
+    },
+    { 
+      "productName": "Inlagd Sill",
+      "unitPrice": 19.0,
+      "unitsInStock": 112
+    },
+    { 
+      "productName": "Gravad lax",
+      "unitPrice": 26.0,
+      "unitsInStock": 11
+    },
+    { 
+      "productName": "Côte de Blaye",
+      "unitPrice": 263.5,
+      "unitsInStock": 17
+    },
+    { 
+      "productName": "Chartreuse verte",
+      "unitPrice": 18.0,
+      "unitsInStock": 69
+    },
+    { 
+      "productName": "Boston Crab Meat",
+      "unitPrice": 18.4,
+      "unitsInStock": 123
+    },
+    { 
+      "productName": "Jack's New England Clam Chowder",
+      "unitPrice": 9.65,
+      "unitsInStock": 85
+    },
+    { 
+      "productName": "Singaporean Hokkien Fried Mee",
+      "unitPrice": 14.0,
+      "unitsInStock": 26
+    },
+    { 
+      "productName": "Ipoh Coffee",
+      "unitPrice": 46.0,
+      "unitsInStock": 17
+    },
+    { 
+      "productName": "Gula Malacca",
+      "unitPrice": 19.45,
+      "unitsInStock": 27
+    },
+    { 
+      "productName": "Rogede sild",
+      "unitPrice": 9.5,
+      "unitsInStock": 5
+    },
+    { 
+      "productName": "Spegesild",
+      "unitPrice": 12.0,
+      "unitsInStock": 95
+    },
+    { 
+      "productName": "Zaanse koeken",
+      "unitPrice": 9.5,
+      "unitsInStock": 36
+    },
+    { 
+      "productName": "Chocolade",
+      "unitPrice": 12.75,
+      "unitsInStock": 15
+    },
+    { 
+      "productName": "Maxilaku",
+      "unitPrice": 20.0,
+      "unitsInStock": 10
+    },
+    { 
+      "productName": "Valkoinen suklaa",
+      "unitPrice": 16.25,
+      "unitsInStock": 65
+    },
+    { 
+      "productName": "Manjimup Dried Apples",
+      "unitPrice": 53.0,
+      "unitsInStock": 20
+    },
+    { 
+      "productName": "Filo Mix",
+      "unitPrice": 7.0,
+      "unitsInStock": 38
+    },
+    { 
+      "productName": "Perth Pasties",
+      "unitPrice": 32.8,
+      "unitsInStock": 0
+    },
+    { 
+      "productName": "Tourtière",
+      "unitPrice": 7.45,
+      "unitsInStock": 21
+    },
+    { 
+      "productName": "Pâté chinois",
+      "unitPrice": 24.0,
+      "unitsInStock": 115
+    },
+    { 
+      "productName": "Gnocchi di nonna Alice",
+      "unitPrice": 38.0,
+      "unitsInStock": 21
+    },
+    { 
+      "productName": "Ravioli Angelo",
+      "unitPrice": 19.5,
+      "unitsInStock": 36
+    },
+    { 
+      "productName": "Escargots de Bourgogne",
+      "unitPrice": 13.25,
+      "unitsInStock": 62
+    },
+    { 
+      "productName": "Raclette Courdavault",
+      "unitPrice": 55.0,
+      "unitsInStock": 79
+    },
+    { 
+      "productName": "Camembert Pierrot",
+      "unitPrice": 34.0,
+      "unitsInStock": 19
+    },
+    { 
+      "productName": "Sirop d'érable",
+      "unitPrice": 28.5,
+      "unitsInStock": 113
+    },
+    { 
+      "productName": "Tarte au sucre",
+      "unitPrice": 49.3,
+      "unitsInStock": 17
+    },
+    { 
+      "productName": "Vegie-spread",
+      "unitPrice": 43.9,
+      "unitsInStock": 24
+    },
+    { 
+      "productName": "Wimmers gute Semmelknödel",
+      "unitPrice": 33.25,
+      "unitsInStock": 22
+    },
+    { 
+      "productName": "Louisiana Fiery Hot Pepper Sauce",
+      "unitPrice": 21.05,
+      "unitsInStock": 76 
+    },
+    { 
+      "productName": "Louisiana Hot Spiced Okra",
+      "unitPrice": 17.0,
+      "unitsInStock": 4
+    },
+    { 
+      "productName": "Laughing Lumberjack Lager",
+      "unitPrice": 14.0,
+      "unitsInStock": 52
+    },
+    { 
+      "productName": "Scottish Longbreads",
+      "unitPrice": 12.5,
+      "unitsInStock": 6
+    },
+    { 
+      "productName": "Gudbrandsdalsost",
+      "unitPrice": 36.0,
+      "unitsInStock": 26
+    },
+    { 
+      "productName": "Outback Lager",
+      "unitPrice": 15.0,
+      "unitsInStock": 15
+    },
+    { 
+      "productName": "Flotemysost",
+      "unitPrice": 21.5,
+      "unitsInStock": 26
+    },
+    { 
+      "productName": "Mozzarella di Giovanni",
+      "unitPrice": 34.8,
+      "unitsInStock": 14
+    },
+    { 
+      "productName": "Röd Kaviar",
+      "unitPrice": 15.0,
+      "unitsInStock": 101
+    },
+    { 
+      "productName": "Longlife Tofu",
+      "unitPrice": 10.0,
+      "unitsInStock": 4
+    },
+    { 
+      "productName": "Rhönbräu Klosterbier",
+      "unitPrice": 7.75,
+      "unitsInStock": 125
+    },
+    { 
+      "productName": "Lakkalikööri",
+      "unitPrice": 18.0,
+      "unitsInStock": 57
+    },
+    { 
+      "productName": "Original Frankfurter grüne Soße",
+      "unitPrice": 13.0,
+      "unitsInStock": 32
+    }
+  ]
 }
+

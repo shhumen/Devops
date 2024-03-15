@@ -88,9 +88,9 @@ const List: React.FC = () => {
     setOpen({ open: false, content: "" });
   };
 
-  const onNavigateToCreate = () => navigate("/categories/create");
+  const onNavigateToCreate = () => navigate("/admin/categories/create");
   const onNavigateToProducts = (id: string) =>
-    navigate(`/products/${id}`);
+    navigate(`/admin/products/${id}`);
 
   type ColumnType = TableProps<CategoryType>["columns"] | any;
   const columns: ColumnType = useMemo(

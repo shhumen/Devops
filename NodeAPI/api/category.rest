@@ -2,18 +2,20 @@
 
 POST http://localhost:5000/api/categories
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWU1OWY5NWE0NjI5ZDZhZDFhOGQ3MjYiLCJpYXQiOjE3MDk1NDc0MTUsImV4cCI6MTcxMTI3NTQxNX0.CAeSg6MKCPlrnrbCuYPJ4akdnPxKcvqIHxLDtYVJGFc
 
 {
-   "categoryName": "Beverages1ww1edfg", "description": "Soft, Tea" 
-}
+   "categoryId": 1, 
+   "categoryName": "Beverage22s",      
+   "description": "Soft drinks, coffees, teas, beers, and ales" 
+},
 
 
 ### Bulk Insert
 
 POST http://localhost:5000/api/categories/bulk-insert
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWU1OWY5NWE0NjI5ZDZhZDFhOGQ3MjYiLCJpYXQiOjE3MDk1NDc0MTUsImV4cCI6MTcxMTI3NTQxNX0.CAeSg6MKCPlrnrbCuYPJ4akdnPxKcvqIHxLDtYVJGFc
 
 {
   "categories": [
@@ -30,22 +32,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmM
 
 
 ### GET Category By Id
-GET http://localhost:5000/api/categories/65ce1d2877c9c036cefce4d6
+GET http://localhost:5000/categories/65ce1d2877c9c036cefce4d6
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
 
 
 ### GET All Categories
-GET http://localhost:5000/api/categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMzk3ODAyYmEzZWE0NGQyODdiM2MiLCJpYXQiOjE3MDkyMTQyMDksImV4cCI6MTcwOTIxNTQwOX0.DmXs9an2CV1blpvw0CpSugeqSfwCJmnTdyCSOaVVcMk
+GET http://localhost:5001/api/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWU1YmRlMTUzODkxMzUxMDFiZTA1YjgiLCJpYXQiOjE3MTAxNjMyNDAsImV4cCI6MTcxMTg5MTI0MH0.jM-YYuBsufBb1QwS1RakAhGu2lizf8F-inyqfKVwDmM
 
 ### DELETE Category By Id
-DELETE http://localhost:5000/api/categories/65ce1d2877c9c036cefce4d6
+DELETE http://localhost:5000/categories/65ce1d2877c9c036cefce4d6
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
 
 ### Update Category By Id
-PATCH http://localhost:5000/api/categories/65ce1d2877c9c036cefce4d6
+PATCH http://localhost:5000/categories/65ce1d2877c9c036cefce4d6
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWRmMGM3MzI4YTliM2U2YjNlMTg0NzkiLCJpYXQiOjE3MDkxMjA5MDV9.DyftnbwYqeY_wDAoq8FY6b2-rJj1hQVIlwD-CqSHAwA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWU1YmRlMTUzODkxMzUxMDFiZTA1YjgiLCJpYXQiOjE3MTAxNjMyNDAsImV4cCI6MTcxMTg5MTI0MH0.jM-YYuBsufBb1QwS1RakAhGu2lizf8F-inyqfKVwDmM
 
 {
    "categoryName": "Bevqerages", "description": "Soft, Tea" 

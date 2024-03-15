@@ -14,6 +14,7 @@ export class BaseService<T extends IBaseEntity> implements IBaseService<T> {
   async get(id: string): Promise<Result<T>> {
     try {
       const response = await http.get<T>(`${this._url}/${id}`);
+      console.log(response);
       return this.handels.handleResponse(response.data);
     } catch (error: any) {
       return this.handels.handleError(error);
@@ -49,18 +50,10 @@ export class BaseService<T extends IBaseEntity> implements IBaseService<T> {
 
   async delete(id: string): Promise<Result<T>> {
     try {
-      const response = await http.delete<T>(`${this._url}/${id}`);
+      const response = await http.delete<T>(`${this._url}/${id}`); 
       return this.handels.handleResponse(response.data);
     } catch (error: any) {
       return this.handels.handleError(error);
     }
-  }
-  /*
-   try {
-      const response = await http.post<T>();
-      return this.handleResponse(response.data);
-    } catch (error: any) {
-      return this.handleError(error);
-    }
-*/
+  } 
 }

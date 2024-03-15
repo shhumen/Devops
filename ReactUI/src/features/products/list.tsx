@@ -1,130 +1,132 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   Card,
   Row,
   Col,
-  Result,
   Button,
   Tooltip,
   Table,
-  Dropdown,
-  Menu,
   Popconfirm,
   Space,
-  TableProps,
+  Select,
+  Dropdown,
+  Menu,
 } from "antd";
 import {
   SearchOutlined,
   PlusOutlined,
-  SettingOutlined,
   EditOutlined,
   DeleteOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
-import { useNavigate, useParams } from "react-router-dom";
-import { deleteProduct, fetchProduct, fetchProducts, updateProduct } from "./productSlice";
-import { ProductType } from "./types";
-import moment from "moment";
+import {
+  deleteProduct,
+  fetchProduct,
+  fetchProducts,
+  updateProduct,
+} from "./productSlice";
+import { fetchCategories } from "../categories/categorySlice";
 import CustomModal from "../../components/Modal";
 import ProductDetail from "./components/productDetail";
 import FormComponent from "./components/formComponent";
 
 export default function List() {
-  const [open, setOpen] = useState({
-    open: false,
-    content: "",
-  });
   const dispatch = useAppDispatch();
-  const products = useAppSelector((state) => state.product.list);
-  console.log("from products list",products);
-  
-  const product = useAppSelector((state) => state.product.selected);
-  console.log("from product list",product)
-
-  // const product = useAppSelector((state) => state.product.selected);
   const navigate = useNavigate();
+  const { categoryId: categoryIdFromUrl } = useParams();
+  const [selectedCategoryId, setSelectedCategoryId] = useState("");
+  const [tableProducts, setTableProducts] = useState([] as any[]);
 
-  const { categoryId } = useParams();
+  const categories = useAppSelector((state) => state.category.list);
+  const products = useAppSelector((state) => state.product.list);
+  const product = useAppSelector((state) => state.product.selected);
 
   useEffect(() => {
-    if (categoryId === undefined) return;
-    dispatch(fetchProducts(categoryId));
-  }, [dispatch]);
+    dispatch(fetchCategories());
+    const categoryIdToUse = selectedCategoryId || categoryIdFromUrl;
+    if (categoryIdToUse) {
+      dispatch(fetchProducts(categoryIdToUse));
 
-
-  const onDetailsHandle = useCallback((e: boolean, id?: string) => {
-    setOpen({
-      open: e,
-      content: "details",
-    });
-    if (id) {
-      dispatch(fetchProduct(id));
+      setTableProducts(products);
     }
-  }, [dispatch]);
-  
-  const onEditHandle = useCallback((e: boolean, id?: string) => {
-    setOpen({
-      open: e,
-      content: "edit",
-    });
-    if (id) {
-      dispatch(fetchProduct(id));
-       console.log(id,'okjhtrewasdfgyofvtrd');
-      
-    }
-    
-  }, [dispatch]);
+  }, [dispatch, categoryIdFromUrl, selectedCategoryId]);
 
-  const onDeleteHandle = useCallback((e: any, id?: string) => {
-    dispatch(deleteProduct(e));
-  }, [dispatch]);
+  const onDetailsHandle = useCallback(
+    (e: boolean, id?: string) => {
+      setOpen({ open: e, content: "details" });
+      if (id) {
+        dispatch(fetchProduct(id));
+      }
+    },
+    [dispatch]
+  );
 
+  const onEditHandle = useCallback(
+    (e: boolean, id?: string) => {
+      setOpen({ open: e, content: "edit" });
+      if (id) {
+        dispatch(fetchProduct(id));
+      } 
+    },
+    [dispatch]
+  );
 
-  const onFinish = (values: any) => {
-    console.log( "vakyes from list tsx", values);
-    dispatch(updateProduct(values));
-    setOpen({ open: false, content: "" });
-    
-   
-  };
+  const onDeleteHandle = useCallback(
+    (id?: string) => {
+      if (id) {
+        dispatch(deleteProduct(id));
+      }
+    },
+    [dispatch]
+  );
 
-  const onNavigate = () => navigate("/products/create");
+  const onFinish = useCallback(
+    (values: any) => {
+      dispatch(updateProduct(values));
+      setOpen({ open: false, content: "" });
+    },
+    [dispatch]
+  );
 
-  type ColumnType = TableProps<ProductType>["columns"] | any;
-  const columns: ColumnType = useMemo(
+  const onNavigate = useCallback(
+    () => navigate("/admin/products/create"),
+    [navigate]
+  );
+
+  const onCategoryChange = useCallback((value: string) => {
+    setSelectedCategoryId(value);
+  }, []);
+
+  const [open, setOpen] = useState({ open: false, content: "" });
+
+  const columns = useMemo(
     () => [
       {
         title: "Product Name",
         dataIndex: "productName",
-        key: `productName`,
+        key: "productName",
       },
       {
         title: "Description",
         dataIndex: "description",
-        key: `description`,
+        key: "description",
       },
       {
         title: "Unit Price",
         dataIndex: "unitPrice",
-        key: `unitPrice`,
+        key: "unitPrice",
       },
       {
         title: "Units In Stock",
         dataIndex: "unitsInStock",
-        key: `unitsInStock`,
+        key: "unitsInStock",
       },
       {
         title: "Category",
         dataIndex: "categoryName",
-        key: `categoryName`,
-      },
-      {
-        title: "Created Date",
-        dataIndex: "createdDate",
-        key: `createdDate`,
-        render: (_: any) => {
-          return <> {moment(_).format("YYYY-MM-DD HH:mm:ss")} </>;
-        },
+        key: "categoryName",
       },
       {
         title: "Actions",
@@ -180,76 +182,59 @@ export default function List() {
         },
       },
     ],
-    []
+    [onDeleteHandle, onDetailsHandle, onEditHandle]
   );
+
   return (
     <>
       <Card>
-        <Row>
-          <Col
-            xs={{ span: 24, offset: 0 }}
-            sm={{ span: 24, offset: 0 }}
-            md={{ span: 0, offset: 0 }}
-          >
-            <Result
-              status="403"
-              title="403"
-              subTitle="Sorry, you are not authorized to access this page."
-              extra={<Button type="primary">Pervin Nerdesin?</Button>}
-            />
-          </Col>
-          <Col
-            xs={{ span: 0, offset: 0 }}
-            sm={{ span: 0, offset: 0 }}
-            md={{ span: 24, offset: 0 }}
-            lg={{ span: 24, offset: 0 }}
-            xl={{ span: 24, offset: 0 }}
-            xxl={{ span: 24, offset: 0 }}
-            style={{ marginBottom: 16 }}
-          >
-            <Tooltip title="Create">
+        <Row gutter={16}>
+          <Col span={24}>
+            <Tooltip title="Create New Product">
               <Button
                 onClick={onNavigate}
-                style={{ float: "right" }}
                 type="primary"
                 icon={<PlusOutlined />}
+                style={{ marginBottom: 16 }}
               >
-                Yeni Prodakt
+                Create Product
               </Button>
             </Tooltip>
           </Col>
           <Col span={24}>
-            <Table
-              size="middle"
-              locale={{
-                emptyText: "Data Yok :(",
-                filterSearchPlaceholder: "Ara",
-              }}
-              columns={columns}
-              dataSource={products}
-            />
+            <Select
+              onChange={onCategoryChange}
+              style={{ width: "100%", marginBottom: 16 }}
+              placeholder="Select a category"
+              value={selectedCategoryId || categoryIdFromUrl}
+            >
+              {categories.map((category) => (
+                <Select.Option key={category._id} value={category._id}>
+                  {category.categoryName}
+                </Select.Option>
+              ))}
+            </Select>
+          </Col>
+          <Col span={24}>
+            <Table columns={columns} dataSource={tableProducts} rowKey="_id" />
           </Col>
         </Row>
       </Card>
-      {open.content === "details" ? (
-        <CustomModal
-          title={`Product Details`}
-          width={1200}
-          open={open.open}
-          onOpenHandler={onDetailsHandle}
-          content={<ProductDetail product={product} />}
-        />
-      ) : (
-        <CustomModal
-          title={`Product Edit`}
-          width={700}
-          open={open.open}
-          onOpenHandler={onEditHandle}
-          content={
-            <FormComponent onFinish={onFinish} initialValues={products} />
-          }
-        />
-      )}
+      <CustomModal
+        title={open.content === "details" ? "Product Details" : "Edit Product"}
+        open={open.open}
+        onOpenHandler={
+          open.content === "details" ? onDetailsHandle : onEditHandle
+        }
+        content={
+          open.content === "details" ? (
+            <ProductDetail product={product} />
+          ) : (
+            <FormComponent onFinish={onFinish} initialValues={product} />
+          )
+        }
+        width={80}
+      />
     </>
   );
 }

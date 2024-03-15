@@ -11,7 +11,9 @@ export interface IProductService {
   getProductsByCategory(categoryId: string): Promise<Result<Product[]>>;
 }
 
-export class ProductService extends BaseService<Product>  implements IProductService
+export class ProductService
+  extends BaseService<Product>
+  implements IProductService
 {
   constructor() {
     super("/products");

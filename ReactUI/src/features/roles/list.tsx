@@ -16,33 +16,20 @@ import { RoleType } from "./types";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   deleteRole,
-  fetchRoles,
-  fetchRole,
-  updateRole,
+  fetchRoles, 
 } from "./roleSlice";
-import {
-  SearchOutlined,
+import { 
   PlusOutlined,
-  SettingOutlined,
-  EditOutlined,
-  DeleteOutlined,
-  UnorderedListOutlined,
+  SettingOutlined, 
+  DeleteOutlined, 
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import Card from "antd/es/card/Card";
-import CustomModal from "../../components/Modal";
-import FormComponent from "./components/formComponent";
+import Card from "antd/es/card/Card"; 
 
-const List: React.FC = () => {
-  const [open, setOpen] = useState({
-    open: false,
-    content: "",
-  });
+const List: React.FC = () => { 
 
   const dispatch = useAppDispatch();
-  const roles = useAppSelector((state) => state.roles.list);
-  const role = useAppSelector((state) => state.roles.selected);
-  console.log(roles);
+  const roles = useAppSelector((state) => state.roles.list);  
   
 
   const navigate = useNavigate();
@@ -51,47 +38,16 @@ const List: React.FC = () => {
     dispatch(fetchRoles());
   }, [dispatch]);
 
-  const onDetailsHandle = useCallback(
-    (e: boolean, id?: string) => {
-      setOpen({
-        open: e,
-        content: "details",
-      });
-      if (id) {
-        dispatch(fetchRole(id));
-      }
-    },
-    [dispatch]
-  );
+ 
 
   const onDeleteHandle = useCallback(
     (e: any) => {
       dispatch(deleteRole(e));
     },
     [dispatch]
-  );
+  ); 
 
-  const onEditHandle = useCallback(
-    (e: boolean, id?: string) => {
-      if (id) {
-        dispatch(fetchRole(id));
-      }
-      setOpen({
-        open: e,
-        content: "edit",
-      });
-    },
-    [dispatch]
-  );
-
-  const onFinish = (values: any) => {
-    dispatch(updateRole(values));
-    setOpen({ open: false, content: "" });
-  };
-
-  const onNavigateToCreate = () => navigate("/admin/role/create");
-  const onNavigateToProducts = (id: string) =>
-    navigate(`/products/${id}`);
+  const onNavigateToCreate = () => navigate("/admin/role/create"); 
 
   type ColumnType = TableProps<RoleType>["columns"] | any;
   const columns: ColumnType = useMemo(
@@ -192,27 +148,7 @@ const List: React.FC = () => {
             />
           </Col>
         </Row>
-      </Card>
-
-      {/* {open.content === "details" ? (
-        <CustomModal
-          title={`Role Details`}
-          width={1200}
-          open={open.open}
-          onOpenHandler={onDetailsHandle}
-          content={<RoleDetails role={role} />}
-        />
-      ) : (
-        <CustomModal
-          title={`Category Edit`}
-          width={700}
-          open={open.open}
-          onOpenHandler={onEditHandle}
-          content={
-            <FormComponent onFinish={onFinish} initialValues={role} />
-          }
-        />
-      )} */}
+      </Card> 
     </>
   );
 };

@@ -8,8 +8,7 @@ import {
   Space,
   Badge,
   Avatar,
-  Dropdown,
-  notification,
+  Dropdown, 
 } from "antd";
 import {
   MenuFoldOutlined,
@@ -22,7 +21,7 @@ import { Link } from "react-router-dom";
 import Title from "antd/es/typography/Title";
 import profilePicture from "../../images/avatar.png";
 
-import NotificationDrawer from "../NotifactionDrawer";
+import NotificationDrawer from "../NotificationDrawer";
 
 interface IHeaderProps {
   firstName?: string;
@@ -37,7 +36,8 @@ const { Header } = Layout;
 const Index = (props: IHeaderProps) => {
   const [visible, setVisible] = React.useState(false);
   const [nCount, setNCount] = React.useState(0);
-  const { collapsed, colorBgContainer, onCollapse, firstName, lastName } = props;
+  const { collapsed, colorBgContainer, onCollapse, firstName, lastName } =
+    props;
 
   const onNotificationHandler = () => {
     setVisible(true);
@@ -57,12 +57,13 @@ const Index = (props: IHeaderProps) => {
         }}
       >
         <Row>
-          <Col span={12}>
-            {" "}
+          <Col span={12}> 
             <Button
               className="trigger"
               type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              icon={  <MenuUnfoldOutlined /> }
+
+              // icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               onClick={() => onCollapse(collapsed)}
               style={{
                 fontSize: "16px",

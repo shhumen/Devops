@@ -40,8 +40,9 @@ export const deleteProduct = createAsyncThunk(
 export const fetchProduct = createAsyncThunk(
   "products/fetchProduct",
   async (id: string) => {
-    const response = await productService.get(id);
-    console.log(response.data);
+    const response = await productService.get(id); 
+    console.log(response.data)
+    console.log(id)
     return response.data;
   }
 );

@@ -11,9 +11,8 @@ const Create: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const onFinish = (values: any) => {
-    dispatch(addProduct(values));
-    console.log(values)
-    navigate("/categories")
+    dispatch(addProduct(values)); 
+    navigate("/admin/products");
   };
 
   return (
